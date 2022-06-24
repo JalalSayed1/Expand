@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
     expand("A-z", s2);
     printf("%s - %s\n", s2, strcmp(s2, "ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 0 ? "OK" : "FAIL");
     expand("a-Z", s2);
-    printf("%s - %s\n", s2, strcmp(s2, "ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 0 ? "OK" : "FAIL");
+    printf("%s - %s\n", s2, strcmp(s2, "abcdefghijklmnopqrstuvwxyz") == 0 ? "OK" : "FAIL");
 
     return 0;
 }
