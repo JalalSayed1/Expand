@@ -31,6 +31,10 @@ int main(int argc, char const *argv[])
     printf("%s - %s\n", s2, strcmp(s2, "a") == 0 ? "OK" : "FAIL");
     expand("a-z0-9", s2);
     printf("%s - %s\n", s2, strcmp(s2, "abcdefghijklmnopqrstuvwxyz") == 0 ? "OK" : "FAIL");
+    expand("A-z", s2);
+    printf("%s - %s\n", s2, strcmp(s2, "ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 0 ? "OK" : "FAIL");
+    expand("a-Z", s2);
+    printf("%s - %s\n", s2, strcmp(s2, "ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 0 ? "OK" : "FAIL");
 
     return 0;
 }
@@ -71,7 +75,15 @@ void expand(char s1[], char s2[])
         s2[nextplace++] = item;
     }
 
-    while (s2[nextplace - 1] != last)
+    // expand depending on item's letter case:
+    if (isupper(item) && islower(last)){
+        last = toupper(last);
+    }else if (islower(item) && isupper(last)){
+        last = tolower(last);
+    }
+    
+
+    while (item != last)
     {
         // item will be the last item store in s2:
         s2[nextplace++] = (item < last) ? ++item : --item;
