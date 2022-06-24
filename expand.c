@@ -59,7 +59,7 @@ void expand(char s1[], char s2[])
     {
         int i = 0;
         item = s1[i];
-        while(!isalpha(item))
+        while (!isalpha(item))
         {
             i++;
             item = s1[i];
@@ -76,12 +76,14 @@ void expand(char s1[], char s2[])
     }
 
     // expand depending on item's letter case:
-    if (isupper(item) && islower(last)){
+    if (isupper(item) && islower(last))
+    {
         last = toupper(last);
-    }else if (islower(item) && isupper(last)){
+    }
+    else if (islower(item) && isupper(last))
+    {
         last = tolower(last);
     }
-    
 
     while (item != last)
     {
