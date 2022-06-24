@@ -6,8 +6,7 @@
 
 void expand(char s1[], char s2[]);
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const* argv[]) {
     char s2[100];
 
     // tests:
@@ -47,27 +46,23 @@ void expand(char s1[], char s2[])
     int item;
 
     // a-z and 0-9 case
-    if (isalpha(s1[0]) && isalpha(s1[len - 1]) || isdigit(s1[0]) && isdigit(s1[len - 1]))
-    {
+    if (isalpha(s1[0]) && isalpha(s1[len - 1]) || isdigit(s1[0]) && isdigit(s1[len - 1])) {
 
         s2[nextplace++] = s1[0];
         item = s1[0];
         last = s1[len - 1];
     }
     // -a-z case:
-    else if (!(isalpha(s1[0]) && isalpha(s1[len - 1])))
-    {
+    else if (!(isalpha(s1[0]) && isalpha(s1[len - 1]))) {
         int i = 0;
         item = s1[i];
-        while (!isalpha(item))
-        {
+        while (!isalpha(item)) {
             i++;
             item = s1[i];
         }
 
         last = s1[len - 1];
-        while (!isalpha(last))
-        {
+        while (!isalpha(last)) {
             i++;
             last = s1[i];
         }
@@ -76,17 +71,14 @@ void expand(char s1[], char s2[])
     }
 
     // expand depending on item's letter case:
-    if (isupper(item) && islower(last))
-    {
+    if (isupper(item) && islower(last)) {
         last = toupper(last);
-    }
-    else if (islower(item) && isupper(last))
-    {
+
+    } else if (islower(item) && isupper(last)) {
         last = tolower(last);
     }
 
-    while (item != last)
-    {
+    while (item != last) {
         // item will be the last item store in s2:
         s2[nextplace++] = (item < last) ? ++item : --item;
     }
